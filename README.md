@@ -18,13 +18,13 @@ ninja --version
 2. glib-2.56 gthread-2.0
 
 ```
-apt-get --reinstall install libglib2.0
+apt-get --reinstall install libglib2.0 libglib2.0-dev
 ```
 
 3. pixman-1
 
 ```
-sudo apt-get install -y libpixman-1-dev
+sudo apt-get install -y libpixman-1-dev 
 ```
 
 
