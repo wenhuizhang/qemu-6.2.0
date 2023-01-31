@@ -54,12 +54,15 @@ root@n223-247-005:~/qemu-6.2.0# cat kata.cfg
 ```
 
 
-3. evalute
+3. evalute configuration
 
 ```
 rm -rf ./build
 eval ./configure "$(cat kata.cfg)"
 ```
+
+configuration, located at "https://github.com/wenhuizhang/qemu-6.2.0/blob/main/configs/devices/x86_64-softmmu/default.mak"
+
 
 4. build
 ```
@@ -77,10 +80,11 @@ cd build
 ../configure --enable-kvm --target-list=x86_64-softmmu 
 ```
 
-Change configuration 
+Change configuration, located at "https://github.com/wenhuizhang/qemu-6.2.0/blob/main/configs/devices/x86_64-softmmu/default.mak"
 
 ```
-make
+make -j $(nproc)
+sudo -E make install
 ```
 
 Configuration
