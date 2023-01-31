@@ -24,7 +24,13 @@ apt-get --reinstall install libglib2.0 libglib2.0-dev
 3. pixman-1
 
 ```
-sudo apt-get install -y libpixman-1-dev 
+apt-get install -y libpixman-1-dev 
+```
+
+4. libc
+
+```
+apt-get install libnuma-dev libpopt-dev
 ```
 
 
