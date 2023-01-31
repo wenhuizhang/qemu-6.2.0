@@ -30,6 +30,23 @@ sudo apt-get install -y libpixman-1-dev
 
 ## 2. Build
 
+### 1. Build for Kata
+
+```
+git clone https://github.com/wenhuizhang/qemu-6.2.0.git
+cd qemu-6.2.0
+
+root@n223-247-005:~/qemu-6.2.0# ~/kata-containers/tools/packaging/scripts/configure-hypervisor.sh qemu > kata.cfg
+rm -rf ./build
+eval ./configure "$(cat kata.cfg)"
+make -j $(nproc)
+sudo -E make install
+```
+
+
+
+### 2. Build original 
+
 ```
 mkdir build
 cd build
