@@ -30,7 +30,7 @@ apt-get install -y libpixman-1-dev
 4. libc
 
 ```
-apt-get install libnuma-dev libpopt-dev
+apt-get install libnuma-dev libpopt-dev libcap-ng-dev
 ```
 
 
