@@ -33,7 +33,7 @@ sudo apt-get install -y libpixman-1-dev
 ```
 mkdir build
 cd build
-../configure --enable-kvm --target-list=x86_64-softmmu
+../configure --enable-kvm --target-list=x86_64-softmmu 
 ```
 
 Change configuration 
