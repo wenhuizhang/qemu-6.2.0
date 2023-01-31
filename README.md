@@ -38,13 +38,31 @@ apt-get install libnuma-dev libpopt-dev
 
 ### 1. Build for Kata
 
+1. download 
 ```
 git clone https://github.com/wenhuizhang/qemu-6.2.0.git
 cd qemu-6.2.0
+```
 
+2. generate configuration
+
+```
 root@n223-247-005:~/qemu-6.2.0# ~/kata-containers/tools/packaging/scripts/configure-hypervisor.sh qemu > kata.cfg
+
+root@n223-247-005:~/qemu-6.2.0# cat kata.cfg 
+--disable-live-block-migration --disable-brlapi --disable-docs --disable-curses --disable-gtk --disable-opengl --disable-sdl --disable-spice --disable-vte --disable-vnc --disable-vnc-jpeg --disable-vnc-png --disable-vnc-sasl --disable-auth-pam --disable-glusterfs --disable-libiscsi --disable-libnfs --disable-libssh --disable-bzip2 --disable-lzo --disable-snappy --disable-tpm --disable-slirp --disable-libusb --disable-usb-redir --disable-tcg --disable-debug-tcg --disable-tcg-interpreter --disable-qom-cast-debug --disable-libudev --disable-curl --disable-rdma --disable-tools --enable-virtfs --disable-bsd-user --disable-linux-user --disable-sparse --disable-vde --disable-xfsctl --disable-libxml2 --disable-nettle --disable-xen --disable-linux-aio --disable-capstone --disable-virglrenderer --disable-replication --disable-smartcard --disable-guest-agent --disable-guest-agent-msi --disable-vvfat --disable-vdi --disable-qed --disable-qcow1 --disable-bochs --disable-cloop --disable-dmg --disable-parallels --enable-kvm --enable-vhost-net --enable-rbd --enable-virtfs --enable-attr --enable-cap-ng --enable-seccomp --enable-avx2 --enable-avx512f --enable-libpmem --enable-malloc-trim --target-list=x86_64-softmmu --enable-pie --extra-cflags=" -O2 -fno-semantic-interposition -falign-functions=32 -D_FORTIFY_SOURCE=2" --extra-ldflags=" -z noexecstack -z relro -z now" --prefix=/usr --libdir=/usr/lib/qemu --libexecdir=/usr/libexec/qemu --datadir=/usr/share/qemu 
+```
+
+
+3. evalute
+
+```
 rm -rf ./build
 eval ./configure "$(cat kata.cfg)"
+```
+
+4. build
+```
 make -j $(nproc)
 sudo -E make install
 ```
