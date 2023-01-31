@@ -32,9 +32,6 @@
 #include "qemu/thread.h"
 #include "qemu/main-loop.h"
 #include "qemu/lockable.h"
-#if defined(CONFIG_MALLOC_TRIM)
-#include <malloc.h>
-#endif
 
 /*
  * Global grace period counter.  Bit 0 is always one in rcu_gp_ctr.
@@ -255,9 +252,6 @@ static void *call_rcu_thread(void *opaque)
                 qemu_event_reset(&rcu_call_ready_event);
                 n = qatomic_read(&rcu_call_count);
                 if (n == 0) {
-#if defined(CONFIG_MALLOC_TRIM)
-                    malloc_trim(4 * 1024 * 1024);
-#endif
                     qemu_event_wait(&rcu_call_ready_event);
                 }
             }
