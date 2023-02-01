@@ -18,19 +18,13 @@ ninja --version
 2. glib-2.56 gthread-2.0
 
 ```
-apt-get --reinstall install libglib2.0 libglib2.0-dev
+apt-get --reinstall install libglib2.0 libglib2.0-dev 
 ```
 
-3. pixman-1
+3. others
 
 ```
-apt-get install -y libpixman-1-dev 
-```
-
-4. libc
-
-```
-apt-get install libnuma-dev libpopt-dev libcap-ng-dev
+apt-get install libnuma-dev libpopt-dev libcap-ng-dev librados-dev libpixman-1-dev librbd-dev libpmem-dev
 ```
 
 
