@@ -30,7 +30,7 @@
    by a small letter.  The capital letter tell the addressing mode,
    and the small letter tells about the operand size.  Refer to
    the Intel manual for details.  */
-
+#include <setjmp.h>
 #include "qemu/osdep.h"
 #include "disas/dis-asm.h"
 #include "qemu/cutils.h"
@@ -3846,7 +3846,7 @@ print_insn (bfd_vma pc, disassemble_info *info)
   start_codep = priv.the_buffer;
   codep = priv.the_buffer;
 
-  if (sigsetjmp(priv.bailout, 0) != 0)
+  if (setjmp(priv.bailout) != 0)
     {
       const char *name;
 
