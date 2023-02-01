@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 
+#include <setjmp.h>
 #include "qemu/osdep.h"
 #include <dirent.h>
 #include "hw/qdev-core.h"
@@ -507,7 +508,7 @@ static int64_t expr_sum(Monitor *mon)
 static int get_expr(Monitor *mon, int64_t *pval, const char **pp)
 {
     pch = *pp;
-    if (sigsetjmp(expr_env, 0)) {
+    if (setjmp(expr_env)) {
         *pp = pch;
         return -1;
     }
