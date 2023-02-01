@@ -22,6 +22,7 @@
 #ifdef _FORTIFY_SOURCE
 #undef _FORTIFY_SOURCE
 #endif
+#include <setjmp.h>
 #include "qemu/osdep.h"
 #include <ucontext.h>
 #include "qemu/coroutine_int.h"
@@ -160,7 +161,7 @@ static void coroutine_trampoline(int i0, int i1)
     co = &self->base;
 
     /* Initialize longjmp environment and switch back the caller */
-    if (!sigsetjmp(self->env, 0)) {
+    if (!setjmp(self->env)) {
         start_switch_fiber_asan(COROUTINE_YIELD, &fake_stack_save, leader.stack,
                                 leader.stack_size);
         start_switch_fiber_tsan(&fake_stack_save, self, true); /* true=caller */
@@ -221,7 +222,7 @@ Coroutine *qemu_coroutine_new(void)
                 2, arg.i[0], arg.i[1]);
 
     /* swapcontext() in, siglongjmp() back out */
-    if (!sigsetjmp(old_env, 0)) {
+    if (!setjmp(old_env)) {
         start_switch_fiber_asan(COROUTINE_YIELD, &fake_stack_save, co->stack,
                                 co->stack_size);
         start_switch_fiber_tsan(&fake_stack_save,
@@ -299,7 +300,7 @@ qemu_coroutine_switch(Coroutine *from_, Coroutine *to_,
 
     current = to_;
 
-    ret = sigsetjmp(from->env, 0);
+    ret = setjmp(from->env);
     if (ret == 0) {
         start_switch_fiber_asan(action, &fake_stack_save, to->stack,
                                 to->stack_size);
