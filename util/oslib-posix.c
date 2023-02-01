@@ -30,6 +30,8 @@
 #include <termios.h>
 
 #include <glib/gprintf.h>
+#include <setjmp.h>
+
 
 #include "qemu-common.h"
 #include "sysemu/sysemu.h"
