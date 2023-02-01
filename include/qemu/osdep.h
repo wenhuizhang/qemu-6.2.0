@@ -733,7 +733,6 @@ extern int qemu_dcache_linesize_log;
 static inline void qemu_reset_optind(void)
 {
     optind = 1;
-    optreset = 1;
 }
 
 /**
