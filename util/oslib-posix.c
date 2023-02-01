@@ -471,7 +471,7 @@ static void *do_touch_pages(void *arg)
     sigaddset(&set, SIGBUS);
     pthread_sigmask(SIG_UNBLOCK, &set, &oldset);
 
-    if (sigsetjmp(memset_args->env, 1)) {
+    if (setjmp(memset_args->env)) {
         memset_thread_failed = true;
     } else {
         char *addr = memset_args->addr;
