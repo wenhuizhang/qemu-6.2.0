@@ -60,6 +60,7 @@ configuration, located at "https://github.com/wenhuizhang/qemu-6.2.0/blob/main/c
 
 4. build
 ```
+cd build
 make -j $(nproc)
 sudo -E make install
 ```
