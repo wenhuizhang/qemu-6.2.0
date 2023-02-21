@@ -24,7 +24,7 @@ apt-get --reinstall install libglib2.0 libglib2.0-dev
 3. others
 
 ```
-apt-get install libnuma-dev libpopt-dev libcap-ng-dev librados-dev libpixman-1-dev librbd-dev libpmem-dev
+apt-get install libnuma-dev libpopt-dev libcap-ng-dev librados-dev libpixman-1-dev librbd-dev libpmem-dev libseccomp-dev
 ```
 
 
