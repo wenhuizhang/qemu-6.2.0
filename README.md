@@ -27,6 +27,9 @@ apt-get --reinstall install libglib2.0 libglib2.0-dev
 apt-get install libnuma-dev libpopt-dev libcap-ng-dev librados-dev libpixman-1-dev librbd-dev libpmem-dev libseccomp-dev
 sudo apt install qemu-system libvirt-daemon-system virtinst
 sudo apt install qemu-kvm virt-manager virtinst libvirt-clients bridge-utils libvirt-daemon-system -y
+
+sudo apt-get install aptitude
+sudo aptitude install gcc-10 g++-10 libpixman-1-dev libcap-ng-dev librbd-dev libpmem-dev
 ```
 
 
